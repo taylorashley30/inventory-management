@@ -4,15 +4,27 @@ const BuyMedicineForm = ({ companies, addMedicine }) => {
   const [selectedCompany, setSelectedCompany] = useState('');
   const [selectedMedicine, setSelectedMedicine] = useState('');
   const [quantity, setQuantity] = useState('');
+  const [error, setError] = useState('');
 
   const handleCompanyChange = (e) => {
     setSelectedCompany(e.target.value);
     setSelectedMedicine(''); // Reset medicine selection when company changes
   };
 
+  const handleQuantityChange = (e) => {
+    const value = e.target.value;
+    setQuantity(value);
+    // Check if value is a number
+    if (value === '' || /^[0-9]*$/.test(value)) {
+      setError(''); // Clear error if valid
+    } else {
+      setError('Please enter a valid number');
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (selectedCompany && selectedMedicine && quantity) {
+    if (selectedCompany && selectedMedicine && quantity && !error) {
       addMedicine({
         company: selectedCompany,
         name: selectedMedicine,
@@ -36,6 +48,7 @@ const BuyMedicineForm = ({ companies, addMedicine }) => {
           ))}
         </select>
       </label>
+      <br />
       <label>
         Medicine:
         <select
@@ -52,15 +65,50 @@ const BuyMedicineForm = ({ companies, addMedicine }) => {
             ))}
         </select>
       </label>
+      <br />
       <label>
         Quantity:
-        <input
-          type="number"
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
-        />
+        <div style={{ position: 'relative', display: 'inline-block' }}>
+          <input
+            type="text"
+            value={quantity}
+            onChange={handleQuantityChange}
+            style={{ paddingRight: '30px' }}
+          />
+          {error && (
+            <div
+              style={{
+                position: 'absolute',
+                top: '50%',
+                right: '10px',
+                transform: 'translateY(-50%)',
+                backgroundColor: 'red',
+                color: 'white',
+                padding: '2px 5px',
+                borderRadius: '3px',
+                fontSize: '12px',
+              }}
+            >
+              {error}
+            </div>
+          )}
+        </div>
       </label>
-      <button type="submit">Buy Medicine</button>
+      <br />
+      <button
+        type="submit"
+        disabled={!!error}
+        style={{
+          backgroundColor: !!error ? '#ccc' : '#007bff',
+          color: '#fff',
+          border: 'none',
+          padding: '10px 20px',
+          borderRadius: '5px',
+          cursor: !!error ? 'not-allowed' : 'pointer',
+        }}
+      >
+        Buy Medicine
+      </button>
     </form>
   );
 };
