@@ -1,0 +1,58 @@
+/* src/App.css */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inventory-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.forms-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+form h2 {
+  margin-top: 0;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form input, form select, form button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #218838;
+}
