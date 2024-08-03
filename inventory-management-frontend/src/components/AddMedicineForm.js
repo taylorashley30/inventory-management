@@ -32,7 +32,19 @@ const AddMedicineForm = ({ companies, addNewMedicine }) => {
           onChange={(e) => setMedicine(e.target.value)}
         />
       </label>
-      <button type="submit">Add Medicine</button>
+      <button
+        type="submit"
+        style={{
+          backgroundColor: '#007bff',
+          color: '#fff',
+          border: 'none',
+          padding: '10px 20px',
+          borderRadius: '5px',
+          cursor: 'pointer',
+        }}
+      >
+        Add Medicine
+      </button>
     </form>
   );
 };
