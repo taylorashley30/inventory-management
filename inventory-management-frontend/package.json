@@ -9,6 +9,7 @@
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
     "css-select": "^5.1.0",
+    "npm-force-resolutions": "^0.0.10",
     "nth-check": "^2.1.1",
     "postcss": "^8.4.40",
     "react": "^18.3.1",
@@ -46,5 +47,13 @@
   "main": "index.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "resolutions": {
+    "nth-check": "2.0.1",
+    "postcss": "8.4.31",
+    "resolve-url-loader": "4.0.0",
+    "svgo": "2.8.0",
+    "@svgr/plugin-svgo": "6.1.0",
+    "@svgr/webpack": "6.1.0"
+  }
 }
