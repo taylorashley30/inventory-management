@@ -73,23 +73,43 @@ const BuyMedicineForm = ({ companies, addMedicine }) => {
             type="text"
             value={quantity}
             onChange={handleQuantityChange}
-            style={{ paddingRight: '30px' }}
+            style={{
+              width: '100px', // Fixed width for the quantity input field
+              padding: '10px',
+              border: `1px solid ${error ? 'red' : '#ced4da'}`,
+              borderRadius: '4px',
+              outline: 'none',
+              boxSizing: 'border-box', // Ensure padding and border are included in width
+            }}
           />
           {error && (
             <div
               style={{
                 position: 'absolute',
                 top: '50%',
-                right: '10px',
+                left: '105%', // Adjust to ensure no overlap
                 transform: 'translateY(-50%)',
-                backgroundColor: 'red',
+                backgroundColor: 'rgba(255, 0, 0, 0.8)',
                 color: 'white',
-                padding: '2px 5px',
-                borderRadius: '3px',
+                padding: '5px 10px',
+                borderRadius: '4px',
                 fontSize: '12px',
+                whiteSpace: 'nowrap',
+                zIndex: 1,
+                boxSizing: 'border-box',
+                // Arrow styling
+                ':before': {
+                  content: "''",
+                  position: 'absolute',
+                  top: '50%',
+                  left: '-5px',
+                  borderWidth: '5px',
+                  borderStyle: 'solid',
+                  borderColor: 'rgba(255, 0, 0, 0.8) transparent transparent transparent',
+                },
               }}
             >
-              {error}
+              Please enter a valid number
             </div>
           )}
         </div>
@@ -105,6 +125,7 @@ const BuyMedicineForm = ({ companies, addMedicine }) => {
           padding: '10px 20px',
           borderRadius: '5px',
           cursor: !!error ? 'not-allowed' : 'pointer',
+          fontSize: '16px',
         }}
       >
         Buy Medicine

@@ -3,13 +3,15 @@ import React, { useState } from 'react';
 const AddMedicineForm = ({ companies, addNewMedicine }) => {
   const [company, setCompany] = useState('');
   const [medicine, setMedicine] = useState('');
+  const [hsn, setHsn] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (company && medicine) {
-      addNewMedicine(company, medicine);
+    if (company && medicine && hsn.length <= 6) {
+      addNewMedicine(company, medicine, hsn);
       setCompany('');
       setMedicine('');
+      setHsn('');
     }
   };
 
@@ -32,6 +34,16 @@ const AddMedicineForm = ({ companies, addNewMedicine }) => {
           onChange={(e) => setMedicine(e.target.value)}
         />
       </label>
+      <label>
+        HSN:
+        <input
+          type="text"
+          value={hsn}
+          onChange={(e) => setHsn(e.target.value.toUpperCase())} // Optional: convert to uppercase
+          maxLength={6}
+          placeholder=" Enter 6 digits code"
+        />
+      </label>
       <button
         type="submit"
         style={{
@@ -41,6 +53,7 @@ const AddMedicineForm = ({ companies, addNewMedicine }) => {
           padding: '10px 20px',
           borderRadius: '5px',
           cursor: 'pointer',
+          fontSize: '16px',
         }}
       >
         Add Medicine
